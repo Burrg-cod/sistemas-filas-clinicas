@@ -1,10 +1,8 @@
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Paciente {
 
-    // Gera senhas sequenciais automaticamente
     private static int proximaSenha = 1;
 
     private final int senha;
@@ -38,11 +36,11 @@ public class Paciente {
     @Override
     public String toString() {
         DateTimeFormatter formato =
-            DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+                DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
 
         return "Senha: " + senha
-            + " | Nome: " + nome
-            + " | CPF: " + cpf
-            + " | Chegada: " + horaChegada.format(formato);
+                + " | Nome: " + nome
+                + " | CPF: " + cpf
+                + " | Chegada: " + horaChegada.format(formato);
     }
 }
