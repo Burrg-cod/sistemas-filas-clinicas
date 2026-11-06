@@ -1,5 +1,5 @@
-
 import java.util.Scanner;
+import ui.InterfaceConsole;
 
 public class Main {
 
@@ -10,37 +10,30 @@ public class Main {
         int opcao = -1;
 
         do {
-            System.out.println("\n===== SISTEMA DA CLINICA =====");
-            System.out.println("1 - Retirar senha");
-            System.out.println("2 - Chamar proximo na recepcao");
-            System.out.println("3 - Chamar proximo para consulta");
-            System.out.println("4 - Listar fila de atendimento");
-            System.out.println("5 - Listar fila de consultas");
-            System.out.println("6 - Ver proximo de cada fila");
-            System.out.println("7 - Relatorio");
-            System.out.println("8 - Demonstrar excecoes");
-            System.out.println("0 - Sair");
-            System.out.print("Escolha uma opcao: ");
+            InterfaceConsole.exibirTitulo();
+            InterfaceConsole.exibirMenu();
 
             String entrada = scanner.nextLine();
 
             try {
                 opcao = Integer.parseInt(entrada);
             } catch (NumberFormatException e) {
-                System.out.println("Digite um numero valido!");
+                InterfaceConsole.erro("Digite um numero valido!");
                 continue;
             }
 
             switch (opcao) {
                 case 1:
-                    System.out.print("Nome do paciente: ");
+                    System.out.print("\nNome do paciente: ");
                     String nome = scanner.nextLine();
 
                     System.out.print("CPF do paciente: ");
                     String cpf = scanner.nextLine();
 
                     if (nome.isBlank() || cpf.isBlank()) {
-                        System.out.println("Nome e CPF sao obrigatorios!");
+                        InterfaceConsole.erro(
+                            "Nome e CPF sao obrigatorios!"
+                        );
                         break;
                     }
 
@@ -76,11 +69,15 @@ public class Main {
                     break;
 
                 case 0:
-                    System.out.println("Encerrando sistema...");
+                    InterfaceConsole.sucesso("Sistema encerrado.");
                     break;
 
                 default:
-                    System.out.println("Opcao invalida!");
+                    InterfaceConsole.aviso("Opcao invalida!");
+            }
+
+            if (opcao != 0) {
+                InterfaceConsole.separador();
             }
 
         } while (opcao != 0);
