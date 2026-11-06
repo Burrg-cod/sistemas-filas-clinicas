@@ -201,4 +201,29 @@ public class ServicoClinica {
             paciente.getHoraChegada().format(FORMATO_DATA)
         );
     }
+    
+public int getQuantidadeAtendimento() {
+    return filaAtendimento.size();
+}
+
+public int getQuantidadeConsultas() {
+    return filaConsultas.size();
+}
+
+public int getQuantidadeAtendidos() {
+    return atendidos.size();
+}
+
+public Paciente getProximoAtendimento() {
+    return filaAtendimento.peek();
+}
+
+public Paciente getProximaConsulta() {
+    return filaConsultas.peek();
+}
+
+public List<Paciente> getAtendidos() {
+    return List.copyOf(atendidos);
+}
+
 }
