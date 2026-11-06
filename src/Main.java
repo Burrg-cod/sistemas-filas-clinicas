@@ -13,14 +13,19 @@ public class Main {
         do {
             InterfaceConsole.limparTela();
             InterfaceConsole.exibirTitulo();
-            InterfaceConsole.exibirMenu();
+            InterfaceConsole.exibirMenu(
+                clinica.getQuantidadeAtendimento(),
+                clinica.getQuantidadeConsultas(),
+                5,
+                clinica.getQuantidadeAtendidos()
+            );
 
             String entrada = scanner.nextLine();
 
             try {
-                opcao = Integer.parseInt(entrada);
+                opcao = Integer.parseInt(entrada.trim());
             } catch (NumberFormatException e) {
-                InterfaceConsole.erro("Digite um numero valido!");
+                InterfaceConsole.erro("Digite um numero valido.");
                 InterfaceConsole.aguardarEnter(scanner);
                 continue;
             }
@@ -30,17 +35,16 @@ public class Main {
             switch (opcao) {
                 case 1:
                     InterfaceConsole.exibirTitulo();
+                    InterfaceConsole.exibirPainel("CADASTRO DE PACIENTE");
 
-                    System.out.print("Nome do paciente: ");
-                    String nome = scanner.nextLine();
+                    System.out.print("  Nome do paciente: ");
+                    String nome = scanner.nextLine().trim();
 
-                    System.out.print("CPF do paciente: ");
-                    String cpf = scanner.nextLine();
+                    System.out.print("  CPF do paciente: ");
+                    String cpf = scanner.nextLine().trim();
 
                     if (nome.isBlank() || cpf.isBlank()) {
-                        InterfaceConsole.erro(
-                            "Nome e CPF sao obrigatorios!"
-                        );
+                        InterfaceConsole.erro("Nome e CPF sao obrigatorios.");
                         break;
                     }
 
@@ -76,11 +80,11 @@ public class Main {
                     break;
 
                 case 0:
-                    InterfaceConsole.sucesso("Sistema encerrado.");
+                    InterfaceConsole.sucesso("Sistema encerrado. Obrigado por utilizar a Clinica Vida+.");
                     break;
 
                 default:
-                    InterfaceConsole.aviso("Opcao invalida!");
+                    InterfaceConsole.aviso("Opcao invalida. Escolha uma opcao de 0 a 8.");
             }
 
             if (opcao != 0) {
