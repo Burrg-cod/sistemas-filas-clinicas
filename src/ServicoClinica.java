@@ -74,13 +74,22 @@ public class ServicoClinica {
     }
 
     // Consulta o proximo sem remover
+   
     public void verProximos() {
-        System.out.println("Proximo na recepcao: "
-            + filaAtendimento.peek());
+        Paciente proximoAtendimento = filaAtendimento.peek();
+        Paciente proximaConsulta = filaConsultas.peek();
 
-        System.out.println("Proximo na consulta: "
-            + filaConsultas.peek());
-    }
+            System.out.println("Proximo na recepcao: " +
+                (proximoAtendimento != null
+                    ? proximoAtendimento
+                        : "Nao ha ninguem na fila!"));
+
+            System.out.println("Proximo na consulta: " +
+                (proximaConsulta != null
+                    ? proximaConsulta
+                        : "Nao ha ninguem na fila!"));
+}
+
 
     // Demonstra tratamento de excecao com remove/element
     public void demonstrarExcecao() {
