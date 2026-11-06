@@ -1,3 +1,4 @@
+
 import java.util.Scanner;
 import ui.InterfaceConsole;
 
@@ -10,6 +11,7 @@ public class Main {
         int opcao = -1;
 
         do {
+            InterfaceConsole.limparTela();
             InterfaceConsole.exibirTitulo();
             InterfaceConsole.exibirMenu();
 
@@ -19,12 +21,17 @@ public class Main {
                 opcao = Integer.parseInt(entrada);
             } catch (NumberFormatException e) {
                 InterfaceConsole.erro("Digite um numero valido!");
+                InterfaceConsole.aguardarEnter(scanner);
                 continue;
             }
 
+            InterfaceConsole.limparTela();
+
             switch (opcao) {
                 case 1:
-                    System.out.print("\nNome do paciente: ");
+                    InterfaceConsole.exibirTitulo();
+
+                    System.out.print("Nome do paciente: ");
                     String nome = scanner.nextLine();
 
                     System.out.print("CPF do paciente: ");
@@ -77,7 +84,7 @@ public class Main {
             }
 
             if (opcao != 0) {
-                InterfaceConsole.separador();
+                InterfaceConsole.aguardarEnter(scanner);
             }
 
         } while (opcao != 0);
