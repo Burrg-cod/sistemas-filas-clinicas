@@ -110,7 +110,7 @@ public class InterfaceConsole {
         opcao("7", "Relatorio geral",
                 "Estatisticas e tempo medio de espera");
 
-        opcao("8", "Demonstrar excecoes Queue",
+        opcao("8", "Testar tratamento de filas vazias",
                 "Exemplo de remove() e element()");
 
         System.out.println();
